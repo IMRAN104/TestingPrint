@@ -1,0 +1,68 @@
+<!Doctype html>
+<html>
+<head>
+<style type="text/css">
+.center_main_div {position:relative; width:874px; height:547px;background-image: url('mr.jpg');}				
+.slno {position: absolute;top: 118px;left: 85px;font-size: 15px;text-align: center; width: 170px; display: inline-block;}
+.date {position: relative;top: 118px;left: 450px;font-size: 15px;text-align: center; width: 170px; display: inline-block;}
+.name {position: relative;top: 158px;left: 0px;font-size: 15px; text-align: center; width: 330px; display: inline-block;}
+
+
+
+</style>
+</head>
+<body>
+<div style="width:100vw; height:90vh;display:flex; justify-content:center; align-items:center;">
+	<div class="center_main_div" id="content" style="position:relative; width:874px; height:547px;background-image: url('mr.jpg');">
+		<div class="slno" style="position: absolute;top: 118px;left: 85px;font-size: 15px;text-align: center; width: 170px; display: inline-block;">2019101458</div>
+		<div class="date">29 Oct 2019</div>
+		<div class="name">Md Sakhawat Hossen</div>
+	</div>
+	<button id="cmd" onclick="print()">generate PDF</button>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="https://code.jquery.com/ui/1.12.0-beta.1/jquery-ui.min.js"></script> -->
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.1.135/jspdf.min.js"></script> -->
+<!-- <script type="text/javascript" src="http://cdn.uriit.ru/jsPDF/libs/adler32cs.js/adler32cs.js"></script> -->
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2014-11-29/FileSaver.min.js"></script> -->
+<!-- <script type="text/javascript" src="libs/Blob.js/BlobBuilder.js"></script> -->
+
+<!-- <script type="text/javascript" src="http://cdn.immex1.com/js/jspdf/plugins/jspdf.plugin.standard_fonts_metrics.js"></script> -->
+<!-- <script type="text/javascript" src="http://cdn.immex1.com/js/jspdf/plugins/jspdf.plugin.split_text_to_size.js"></script> -->
+<!-- <script type="text/javascript" src="http://cdn.immex1.com/js/jspdf/plugins/jspdf.plugin.from_html.js"></script> -->
+<script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
+<script type="text/javascript" src="html2canvas.min.js"></script>
+<script type="text/javascript" src="addimage.js"></script>
+<!-- <script>
+	$(function () {
+
+	    var specialElementHandlers = {
+	        '#editor': function (element,renderer) {
+	            return true;
+	        }
+	    };
+	 $('#cmd').click(function () {
+	        var doc = new jsPDF();
+	        doc.fromHTML(
+	            $('#content').html(), 15, 15, 
+	            { 'width': 170, 'elementHandlers': specialElementHandlers }, 
+	            function(){ doc.save('sample-file.pdf'); }
+	        );
+
+	    });  
+	});
+</script> -->
+<script type="text/javascript">
+		function print() {
+	      alert("hey");
+	      const filename  = 'sample.pdf';
+
+	      html2canvas(document.querySelector('#content')).then(canvas => {
+	        let pdf = new jsPDF('p', 'mm', 'a4');
+	        pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 211, 298);
+	        pdf.save(filename);
+	      });
+	    }
+	</script>
+</body>
+</html>
