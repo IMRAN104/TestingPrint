@@ -59,7 +59,7 @@
 
 	      html2canvas(document.querySelector('#content'),{scale: quality}).then(canvas => {
 	        let pdf = new jsPDF('p', 'px', 'a4');
-	        pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 2480, 3508);
+	        pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 854, 547);
 	        pdf.save(filename);
 	      });
 	    }
